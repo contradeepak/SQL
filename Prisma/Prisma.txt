@@ -1,0 +1,73 @@
+1- With Prisma you can write these kinds of SQL queries into this,
+
+SELECT * FROM users WHERE userId=1
+
+in like Prisma =>
+prisma.users.findOn({
+where: {
+userId: 1
+}
+})
+
+
+Commands
+
+npx prisma migrate dev
+
+
+2- Why ORMS
+
+1- Syntax is simpler
+2- Abstraction that can lead you to flip between databases(very hard) you are using. Unified API irrespective of the DB.
+Although migrating databases is something i.e. not going to happen many times.
+3- Type safety/autocompletion. 
+4- Automatic migrations.
+5- 
+
+
+
+
+
+3- SQL Injection can be avoided. Otherwise there are thousands even found SQL Injections in websites.
+
+4- 
+
+function App() {
+  return (
+    <>
+  <HeaderComponent/>
+  <ProductList />
+  </>
+  );
+}
+
+export default App;
+
+
+// 1. Load Cart from Local Storage on startup
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem("myCart");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [view, setView] = useState("home"); // To switch between Product List and Cart
+
+  // 2. Save to Local Storage whenever 'cart' updates
+  useEffect(() => {
+    localStorage.setItem("myCart", JSON.stringify(cart));
+  }, [cart]);
+
+  // 3. Add to Cart Logic
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    alert(`${product.name} added!`);
+  };
+
+  // 4. Remove from Cart Logic (Optional but useful)
+  const removeFromCart = (indexToRemove) => {
+    setCart(cart.filter((_, index) => index !== indexToRemove));
+  };
+
+
+
+
